@@ -1,0 +1,162 @@
+// fonts
+
+@font-face {
+    font-family: Made;
+    src: url(/assets/fonts/Made.otf);
+}
+
+
+// colors
+
+$colors: (
+  theme: (    
+	'text-color': #121212,
+	'select-color': #ededed,
+	'heading-color': #e8b3b3,
+	'gradient-1': #f6d5f7,
+	'gradient-2': #fbe9d7,
+	'alt-text': #aaaaaa,
+  ),
+);
+
+:root {
+  @each $theme, $color in map-get($colors, theme) {
+    --#{$theme}: #{$color};
+  }
+}
+
+@function color($color) {
+  @return var(--#{$color});
+}
+
+// variables
+
+$sub-font: 'Made';
+
+// reset
+
+* {
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+	cursor: url(https://cur.cursors-4u.net/cursors/cur-9/cur817.cur), auto !important;
+    scroll-behavior: smooth;
+}
+
+:root {
+	font-size: 14px;
+}
+
+::selection {
+	background-color: black;
+	color: color(select-color);
+}
+
+body, html {
+	overflow-x: hidden;
+	transition: all 0.5s;
+	color: color(text-color);
+}
+
+// index
+
+#container {
+	height: 100vh;
+	background-image: linear-gradient(45deg, color(gradient-1), color(gradient-2));
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	.inner-container {
+		height: 350px;
+		width: 970px;
+		//background-color: green;
+		position: relative;
+		transition: all .5s;
+			
+		.generate {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: 0 auto;
+			margin-top: 50px;
+			width: 200px;
+			background-color: #ededed;
+			font-family: "Made";
+			font-size: 1.2rem;
+			padding: 20px;
+			text-transform: uppercase;
+			text-align: center;
+			color: #959595;
+
+			&::selection {
+				background-color: transparent;
+				color: #959595;
+			}
+		}
+
+		.content {
+
+			h1 {
+				font-family: $sub-font;
+				font-size: 4rem;
+				text-align: center;
+				color: color(heading-color);
+				transition: all 1.5s;
+				text-transform: uppercase;
+			}
+	
+			h3 {
+				text-align: center;
+				margin-top: 2rem;
+				font-family: $sub-font;
+				font-weight: lighter;
+				color: color(alt-text);
+			}
+	
+			.affirmations {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 260px;
+				margin: 50px 0;
+				text-align: center;
+				font-family: $sub-font;
+				color: color(heading-color);
+				font-size: 5rem;
+				opacity: 0;
+				transition: all 1.5s;
+				transition-delay: .5s;
+			}
+		}
+	}
+}
+
+footer {
+	position: absolute;
+	bottom: 20px;
+	width: 100%;
+	padding: {
+		top: 20px;
+		left: 20px;
+		right: 20px;
+	}
+	display: flex;
+	color: color(alt-text);
+
+	.credits {
+		text-transform: uppercase;
+		letter-spacing: 0.131em;
+		text-transform: uppercase;
+		font-size: .7rem;
+	}
+
+	.version-number {
+		margin-left: auto;
+		text-transform: uppercase;
+		letter-spacing: 0.131em;
+		text-transform: uppercase;
+		font-size: .7rem;
+	}
+}
